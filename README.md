@@ -1,16 +1,39 @@
-# sneakers_store
+## tugas 7
 
-A new Flutter project.
+1. Jelaskan apa yang dimaksud dengan stateless widget dan stateful widget, dan jelaskan perbedaan dari keduanya.
 
-## Getting Started
+    -stateles widget
+    stateles widget adalah widget yang tidak memiliki state atau kondisi yang berubah di mana nilai-nilainya tidak bisa diupdate tanpa membuat ulang widget tersebut. contohnya seperti teks, icon, atau tombol yang tidak membutuhkan perubahan data.
 
-This project is a starting point for a Flutter application.
+    -stateful widget
+    stateful widget adalah widget yang memiliki state yang berubah-ubah. contohnya tombol yang bisa berubah warna saat ditekan atau teks yang bisa berubah isinya 
 
-A few resources to get you started if this is your first Flutter project:
+    perbedaan di antara keduanya adalah stateles widget dapat berubah setelah dibuat, sedangkan stateful widget bisa berubah dan akan merender ulang.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+2. Sebutkan widget apa saja yang kamu gunakan pada proyek ini dan jelaskan fungsinya.
+    -MaterialApp: Ini adalah widget utama yang digunakan untuk membangun aplikasi berbasis Material Design. MaterialApp menyediakan struktur dasar untuk mengatur navigasi, tema, dan orientasi aplikasi.
+    -Scaffold: Widget ini menyediakan struktur dasar halaman seperti AppBar, Body, dan FloatingActionButton. Ini berguna untuk membuat layout standar aplikasi.
+    -AppBar: Menampilkan bar di bagian atas aplikasi dengan judul atau ikon. Di sini kita menggunakan AppBar untuk menampilkan judul aplikasi.
+    -Text: Digunakan untuk menampilkan teks pada layar. Dalam aplikasi ini, Text digunakan untuk menampilkan informasi pengguna dan sambutan di halaman utama.
+    -Row dan Column: Widget ini digunakan untuk menyusun widget secara horizontal (Row) atau vertikal (Column). Dalam aplikasi ini, Row digunakan untuk menampilkan InfoCard secara berdampingan, dan Column untuk menyusun item secara vertikal.
+    -GridView: Membuat grid dengan jumlah kolom tertentu untuk menampilkan daftar item dengan rapi. Di aplikasi ini, GridView.count digunakan untuk menampilkan menu-menu seperti "Lihat Mood" dan "Tambah Mood" dalam bentuk grid.
+    -Card: Membuat kotak kartu dengan bayangan, cocok untuk menampilkan informasi seperti data pengguna. InfoCard dan ItemCard dalam aplikasi ini menggunakan Card untuk tampilannya.
+    -Icon: Menampilkan ikon pada layar. Ikon di sini digunakan untuk menampilkan ikon di setiap menu (Lihat Mood, Tambah Mood, Logout).
+    -SnackBar: Menampilkan pesan sementara di bagian bawah layar ketika suatu tindakan dilakukan, seperti saat salah satu ItemCard ditekan.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+3. Apa fungsi dari setState()? Jelaskan variabel apa saja yang dapat terdampak dengan fungsi tersebut.
+    setState() adalah fungsi dalam stateful widget yang digunakan untuk memberitahui bahwa ada perubahan data pada aplikasi.
+
+    variabel yang berdampak adalah variabel yang berada di dalam class state dan terkait dengan UI.
+
+4. Jelaskan perbedaan antara const dengan final.
+    -const digunakan untuk membuat nilai konstan, sehingga nilainya akan tetap dan tidak bisa diubah.
+
+    -final digunakan untuk nilai yang diinisiasi sekali, tetapi nilainya mungkin bisa diketahui saat runtime. nilai final tidak bisa diubah tapi nilainya bisa dihitung ketika aplikasi berjalan
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist-checklist di atas.
+    -membuat flutter app menjadi sneakers_store
+    -membuat file menu.dart di folder lib
+    -membuat class MyHomePage, InfoCard, ItemCard, ItemHomePage
+    -membuat tombol "lihat daftar produk", "tambah produk", "log out"
+    -membuat snackbar
