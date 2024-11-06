@@ -59,7 +59,7 @@
     @override
     Widget build(BuildContext context) {
         return MaterialApp(
-        title: 'Cookies Store',
+        title: 'Sneakers Store',
         theme: ThemeData(
             colorScheme: ColorScheme.fromSwatch(
             primarySwatch: Colors.brown,
