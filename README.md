@@ -32,8 +32,77 @@
     -final digunakan untuk nilai yang diinisiasi sekali, tetapi nilainya mungkin bisa diketahui saat runtime. nilai final tidak bisa diubah tapi nilainya bisa dihitung ketika aplikasi berjalan
 
 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist-checklist di atas.
-    -membuat flutter app menjadi sneakers_store
-    -membuat file menu.dart di folder lib
-    -membuat class MyHomePage, InfoCard, ItemCard, ItemHomePage
-    -membuat tombol "lihat daftar produk", "tambah produk", "log out"
-    -membuat snackbar
+    1. Membuat Project Flutter:
+
+    Buka terminal dan jalankan:
+    bash
+    Salin kode
+    flutter create cookies_store
+    cd cookies_store
+    flutter run
+    Setup Struktur Awal Project:
+
+    2 Edit main.dart agar homepage diarahkan ke menu.dart:
+
+    dart
+    Salin kode
+    import 'package:flutter/material.dart';
+    import 'package:cookies_store/menu.dart';
+
+    void main() {
+    runApp(const MyApp());
+    }
+
+    class MyApp extends StatelessWidget {
+    const MyApp({super.key});
+
+    @override
+    Widget build(BuildContext context) {
+        return MaterialApp(
+        title: 'Cookies Store',
+        theme: ThemeData(
+            colorScheme: ColorScheme.fromSwatch(
+            primarySwatch: Colors.brown,
+            ).copyWith(secondary: Colors.brown[400]),
+            useMaterial3: true,
+        ),
+        home: MyHomePage(),
+        );
+    }
+    }
+
+    3. Membuat Kelas ItemHomepage:
+
+    Pada menu.dart, tambahkan kelas berikut untuk menyimpan nama dan ikon tombol:
+    dart
+    
+    class ItemHomepage {
+        final String name;
+        final IconData icon;
+        ItemHomepage(this.name, this.icon);
+    }
+    Menambahkan Daftar Item:
+
+    4. Tambahkan daftar item pada menu.dart dengan tiga tombol (Lihat Daftar Produk, Tambah Produk, Logout):
+    dart
+
+    final List<ItemHomepage> items = [
+    ItemHomepage("Lihat Daftar Produk", Icons.store),
+    ItemHomepage("Tambah Produk", Icons.add),
+    ItemHomepage("Logout", Icons.logout),
+    ];
+    Membuat ItemCard dan Menggunakan Snackbar:
+
+    5. Buat ItemCard sebagai StatelessWidget untuk menampilkan setiap item. Tambahkan kode berikut pada ItemCard untuk memunculkan Snackbar saat tombol ditekan:
+    dart
+  
+    onTap: () {
+    ScaffoldMessenger.of(context)
+    ..hideCurrentSnackBar()
+    ..showSnackBar(
+        SnackBar(content: Text("Kamu telah menekan tombol ${item.name}!"))
+    );
+    },
+    Mengupdate MyHomePage:
+
+    Pada MyHomePage, ubah konstruktor menjadi ({super.key}) tanpa parameter title.
