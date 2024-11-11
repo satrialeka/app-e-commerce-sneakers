@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sneakers_store/widgets/left_drawer.dart';
-import 'package:sneakers_store/screens/SneakersEntry_form.dart'; // Import halaman MoodEntryFormPage
+import 'package:sneakers_store/screens/SneakersEntry_form.dart'; 
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
@@ -138,7 +138,7 @@ class ItemCard extends StatelessWidget {
               SnackBar(content: Text("Kamu telah menekan tombol ${item.name}!")),
             );
 
-          if (item.name == "Tambah Mood") {
+          if (item.name == "Tambah Sneaker") {
             Navigator.push(
               context,
               MaterialPageRoute(
