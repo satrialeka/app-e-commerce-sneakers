@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sneakers_store/widgets/left_drawer.dart';
+import 'package:sneakers_store/screens/SneakersEntry_form.dart'; // Import halaman MoodEntryFormPage
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
@@ -7,14 +9,16 @@ class MyHomePage extends StatelessWidget {
   final String className = 'PBP C'; // Kelas
 
   final List<ItemHomepage> items = [
-    ItemHomepage("Lihat Mood", Icons.mood),
-    ItemHomepage("Tambah Mood", Icons.add),
+    ItemHomepage("Lihat Sepatu", Icons.mood),
+    ItemHomepage("Tambah Sepatu", Icons.add),
     ItemHomepage("Logout", Icons.logout),
   ];
 
   @override
   Widget build(BuildContext context) {
+    // Scaffold menyediakan struktur dasar halaman dengan AppBar dan body.
     return Scaffold(
+      // AppBar adalah bagian atas halaman yang menampilkan judul.
       appBar: AppBar(
         title: const Text(
           'Sneakers Store',
@@ -23,13 +27,20 @@ class MyHomePage extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
+        // Warna latar belakang AppBar diambil dari skema warna tema aplikasi.
         backgroundColor: Theme.of(context).colorScheme.primary,
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
+      // Masukkan drawer sebagai parameter nilai drawer dari widget Scaffold
+      drawer: const LeftDrawer(),
+      // Body halaman dengan padding di sekelilingnya.
       body: Padding(
         padding: const EdgeInsets.all(16.0),
+        // Menyusun widget secara vertikal dalam sebuah kolom.
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            // Row untuk menampilkan 3 InfoCard secara horizontal.
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -39,6 +50,7 @@ class MyHomePage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 16.0),
+
             Center(
               child: Column(
                 children: [
@@ -74,8 +86,8 @@ class MyHomePage extends StatelessWidget {
 }
 
 class InfoCard extends StatelessWidget {
-  final String title;
-  final String content;
+  final String title; // Judul kartu.
+  final String content; // Isi kartu.
 
   const InfoCard({super.key, required this.title, required this.content});
 
@@ -84,7 +96,7 @@ class InfoCard extends StatelessWidget {
     return Card(
       elevation: 2.0,
       child: Container(
-        width: MediaQuery.of(context).size.width / 3.5,
+        width: MediaQuery.of(context).size.width / 3.5, // Responsive width
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
@@ -115,22 +127,25 @@ class ItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Define a navy blue color.
-    final Color navyBlue = Colors.blue[900]!;
-
     return Material(
-      // Conditionally set the background color to navy blue for specific buttons.
-      color: (item.name == "Lihat Mood" || item.name == "Tambah Mood" || item.name == "Logout")
-          ? navyBlue
-          : Theme.of(context).colorScheme.secondary,
+      color: Theme.of(context).colorScheme.secondary,
       borderRadius: BorderRadius.circular(12),
       child: InkWell(
         onTap: () {
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
-              SnackBar(content: Text("Kamu telah menekan tombol ${item.name}!"))
+              SnackBar(content: Text("Kamu telah menekan tombol ${item.name}!")),
             );
+
+          if (item.name == "Tambah Mood") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const SneakersentryForm(),
+              ),
+            );
+          }
         },
         child: Container(
           padding: const EdgeInsets.all(8),
