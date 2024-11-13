@@ -37,8 +37,8 @@
     Buka terminal dan jalankan:
     bash
     Salin kode
-    flutter create cookies_store
-    cd cookies_store
+    flutter create sneakers_store
+    cd sneakers_store
     flutter run
     Setup Struktur Awal Project:
 
@@ -47,7 +47,7 @@
     dart
     Salin kode
     import 'package:flutter/material.dart';
-    import 'package:cookies_store/menu.dart';
+    import 'package:sneakers_store/menu.dart';
 
     void main() {
     runApp(const MyApp());
@@ -106,3 +106,123 @@
     Mengupdate MyHomePage:
 
     Pada MyHomePage, ubah konstruktor menjadi ({super.key}) tanpa parameter title.
+
+## tugas 8
+
+1. Apa kegunaan const di Flutter? Jelaskan apa keuntungan ketika menggunakan const pada kode Flutter. Kapan sebaiknya kita menggunakan const, dan kapan sebaiknya tidak digunakan?
+
+Di Flutter, kata kunci const digunakan untuk menciptakan objek atau widget yang sifatnya tetap dan tidak akan berubah selama aplikasi berjalan. Menggunakan const memungkinkan objek atau widget tersebut diinisialisasi saat kompilasi dan tidak memerlukan inisialisasi ulang selama runtime, yang sangat mengoptimalkan performa aplikasi, terutama dalam menangani widget statis.
+
+-Manfaat Menggunakan const
+    Penghematan Memori: Objek yang ditandai const hanya diinisialisasi sekali dalam memori dan dapat digunakan berulang kali. Ini mencegah alokasi objek baru setiap kali widget tersebut muncul, yang membantu menghemat memori.
+    Peningkatan Kinerja: Karena objek const sudah diinisialisasi saat kompilasi, Flutter tidak perlu membuat ulang objek tersebut saat merender ulang UI, mengurangi rebuild yang tidak perlu dan mempercepat rendering.
+    Konsistensi Data: const menjamin data tetap tidak berubah, menjaga data tetap konsisten karena objek const bersifat immutabel setelah inisialisasi.
+    Pemanfaatan Cache Rendering: Flutter dapat menyimpan hasil rendering dari widget const untuk digunakan kembali, sehingga mengurangi beban rendering.
+
+-Kapan Sebaiknya Menggunakan const
+    Widget Statis: Pada widget atau elemen UI yang tidak berubah, misalnya Text("Hello World") atau Icon(Icons.add).
+    Variabel Global: Pada data tetap yang diakses di berbagai bagian aplikasi, misalnya URL atau konstanta angka.
+    Konfigurasi atau Nilai Konstanta: Untuk nilai konfigurasi seperti padding, margin, dan durasi animasi yang tidak berubah.
+    List atau Map Tak Berubah: Pada list atau map yang nilainya tidak akan dimodifikasi setelah inisialisasi, seperti const [1, 2, 3].
+
+-Kapan Sebaiknya Tidak Menggunakan const
+    Data yang Bersifat Dinamis: Pada objek atau data yang akan berubah, misalnya input pengguna atau data dari server.
+    Widget yang Bergantung pada State: Jika widget membutuhkan variabel yang dapat berubah melalui StatefulWidget atau penyedia data, hindari penggunaan const.
+    Komponen yang Dibuat Dinamis: Misalnya widget yang dipengaruhi kondisi atau state tertentu dan memerlukan pembaruan ketika state berubah.
+
+
+2. Jelaskan dan bandingkan penggunaan Column dan Row pada Flutter. Berikan contoh implementasi dari masing-masing layout widget ini! 
+-Column: Menyusun widget dalam arah vertikal dari atas ke bawah. Biasanya digunakan untuk membuat susunan vertikal dari elemen UI, seperti teks atau tombol berurutan.
+
+-Properti penting:
+    -mainAxisAlignment: Mengatur posisi widget sepanjang sumbu vertikal.
+    -crossAxisAlignment: Mengatur posisi widget di sumbu horizontal.
+    -children: Menentukan widget yang akan ditampilkan di dalam Column.
+
+Contoh:
+
+dart
+Column(
+  mainAxisAlignment: MainAxisAlignment.center,
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    Text("Hello, World!"),
+    Text("Welcome to Flutter"),
+    ElevatedButton(onPressed: () {}, child: Text("Click Me")),
+  ],
+)
+
+-Row: Menyusun widget secara horizontal dari kiri ke kanan. Biasanya digunakan untuk menyusun elemen UI dalam satu baris.
+
+-Properti penting:
+    -mainAxisAlignment: Mengatur posisi widget sepanjang sumbu horizontal.
+    -crossAxisAlignment: Mengatur posisi widget di sumbu vertikal.
+    -children: Menentukan widget yang akan ditampilkan di dalam Row.
+
+Contoh:
+dart
+Row(
+  mainAxisAlignment: MainAxisAlignment.spaceAround,
+  crossAxisAlignment: CrossAxisAlignment.center,
+  children: [
+    Icon(Icons.home),
+    Text("Home"),
+    ElevatedButton(onPressed: () {}, child: Text("Click Me")),
+  ],
+)
+
+-Kapan Menggunakan Column atau Row
+    -Column: Digunakan saat ingin menyusun elemen secara vertikal, misalnya membuat formulir atau daftar item yang ditampilkan dari atas ke bawah.
+    -Row: Digunakan saat ingin menyusun elemen secara horizontal, misalnya ikon dan teks dalam satu baris atau beberapa tombol aksi yang tampil berdampingan.
+
+-Elemen Input di Halaman Form
+
+    Elemen yang Digunakan:
+        -TextFormField untuk masukan Name (nama item).
+        -TextFormField untuk masukan Amount (jumlah item), diatur agar hanya menerima angka.
+        -TextFormField untuk masukan Description (deskripsi item).
+        
+
+    
+-Kapan Menggunakan Column dan Row
+    -Gunakan Column saat ingin membuat tata letak vertikal seperti daftar, formulir, atau sekumpulan teks dan tombol yang diletakkan dari atas ke bawah.
+    -Gunakan Row saat ingin membuat tata letak horizontal, misalnya ikon dan teks pada satu baris, atau tombol-tombol tindakan yang diletakkan berdampingan.
+
+
+3. Sebutkan apa saja elemen input yang kamu gunakan pada halaman form yang kamu buat pada tugas kali ini. Apakah terdapat elemen input Flutter lain yang tidak kamu gunakan pada tugas ini? Jelaskan!
+
+Elemen Input yang Digunakan di Halaman Form:
+    -TextFormField untuk memasukkan Name (nama item).
+    -TextFormField untuk memasukkan Amount (jumlah item), yang diformat agar hanya menerima angka.
+    -TextFormField untuk memasukkan Description (deskripsi item).
+    
+Elemen Input Lain di Flutter yang Tidak Digunakan:
+    -DropdownButton: Elemen input ini digunakan untuk membuat dropdown list (daftar pilihan).
+    -Checkbox: Elemen input untuk memilih opsi dengan mencentang kotak.
+    -Radio: Elemen input untuk memilih salah satu dari beberapa opsi yang tersedia.
+    -Switch: Elemen input yang berfungsi sebagai toggle switch untuk pilihan "aktif" atau "tidak aktif".
+    -Slider: Elemen input untuk memilih nilai dalam rentang tertentu (misalnya volume suara).
+    -DatePicker atau TimePicker: Elemen ini memungkinkan pengguna memilih tanggal atau waktu.
+
+saya tidak memakai elemen di atas karena input form yang dibutuhkan hanya teks dan angka
+
+4. Bagaimana cara kamu mengatur tema (theme) dalam aplikasi Flutter agar aplikasi yang dibuat konsisten? 
+Apakah kamu mengimplementasikan tema pada aplikasi yang kamu buat?
+
+Untuk menjaga konsistensi tampilan, saya mengatur tema aplikasi menggunakan ThemeData dalam widget MaterialApp. 
+Dengan ThemeData, kita bisa mengatur warna utama (primaryColor), warna aksen (accentColor), gaya teks, dan elemen lain seperti tampilan tombol (ButtonStyle). Hal ini memungkinkan semua elemen aplikasi menggunakan tema yang seragam, sehingga terlihat lebih konsisten.
+
+Contoh penerapan:
+
+dart
+MaterialApp(
+  theme: ThemeData(
+    colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue),
+    textTheme: TextTheme(bodyText1: TextStyle(color: Colors.black)),
+  ),
+);
+
+5. Bagaimana cara kamu menangani navigasi dalam aplikasi dengan banyak halaman pada Flutter?
+Navigasi di Flutter diatur menggunakan Navigator dan Route. Pada aplikasi ini, saya menggunakan Navigator.push untuk berpindah halaman, misalnya dari halaman utama ke halaman form. 
+Pada aplikasi dengan lebih banyak halaman, Navigator.pushNamed dengan daftar rute (routes) dalam MaterialApp dapat digunakan untuk memudahkan navigasi. 
+Untuk navigasi yang sering digunakan, saya bisa menambahkan Drawer atau BottomNavigationBar sebagai navigasi tetap di bagian bawah atau samping aplikasi.
